@@ -22,6 +22,7 @@ else
             </tr>
         </thead>
         <tbody>
+            @*Строки с работами:*@
             @foreach (var work in Works)
             {
                 <tr>
@@ -40,6 +41,7 @@ else
                 </tr>
 
             }
+            @*Всего:*@
             <tr>
                 <td></td>
                 <td></td>
@@ -48,6 +50,34 @@ else
                 <td></td>
                 <td></td>
                 <td>@Work.GetFinishTime(Works)</td>
+                <td></td>
+            </tr>
+            @*Добавление новой работы:*@
+            <tr>
+                <td>
+                    @DateTime.Now.ToShortDateString() @*Дата*@
+                </td>
+                <td>
+                    <select class="custom-select">
+                        @*Название работы:*@
+                        <option>DevBoard</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="custom-select">
+                        <option>Поменять местами последнюю строку и Всего;</option>
+                        <option>Разметка добавления новой работы;</option>
+                        <option>Компонент для добавления новой работы;</option>
+                        <option>Сделать enum на все статичные ссылки;</option>
+                        <option>Сделать принудительный перенос после ';';</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" style="width:100%"/>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
             </tr>
         </tbody>
