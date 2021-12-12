@@ -130,15 +130,20 @@ namespace DevBoard.Shared
                     WhatsUp = "добавил значок play в каждую строку; " },
                 new Work(){
                     Start = new DateTime(2021, 12, 12, 16, 6, 0),
-                    Duration = 0,
+                    Duration = 13,
+                    Name = "DevBoard",
+                    Description = @"GIT;",
+                    WhatsUp = "Изучение работы с Git в VS; Авторизация и подключение к репозиторию; Проверка сохранения изменний;" },                
+                new Work(){
+                    Start = new DateTime(2021, 12, 12, 16, 6, 0),
+                    Duration = 16,
                     Name = "DevBoard",
                     Description = @"
-GIT;
 Подключение БД;
 Строку для добавления новой работы;
 Сделать enum на все статичные ссылки; 
 Сделать принудительный перенос после ';' ;",
-                    WhatsUp = "Изучение работы с Git в VS;" },
+                    WhatsUp = "______" },
             };
             return works;
         }
