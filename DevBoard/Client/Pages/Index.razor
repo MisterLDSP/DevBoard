@@ -1,0 +1,15 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code{ 
+    protected override void OnInitialized()
+    {
+        // TODO: Сделать enum на все статичные ссылки. 
+        NavigationManager.NavigateTo("/board"); // Перекидывам пользователя на board. 
+    }
+}

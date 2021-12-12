@@ -1,0 +1,55 @@
+﻿@page "/board"
+@using DevBoard.Shared
+<h3>DevBoard</h3>
+
+@if (Works == null)
+{
+    <div>Loading...</div>
+}
+else
+{
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Дата:</th>
+                <th>Название:</th>
+                <th>Задание:</th>
+                <th>Выполнение:</th>
+                <th>Старт:</th>
+                <th>Стоп:</th>
+                <th>Всего:</th>
+                <th style="text-align:center">Действие:</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var work in Works)
+            {
+                <tr>
+                    <td>@work.Start.ToShortDateString()</td>
+                    <td>@work.Name</td>
+                    <td>@work.Description</td>
+                    <td>@work.WhatsUp</td>
+                    <td style="white-space:nowrap">@work.GetStartTime()</td>
+                    <td style="white-space:nowrap">@work.GetStopTime()</td>
+                    <td style="white-space:nowrap">@work.GetDuration()</td>
+                    <td style="text-align:center">
+                        <button class="btn btn-dark">
+                            <span class="oi oi-media-play" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right">Всего:</td>
+                <td></td>
+                <td></td>
+                <td>@Work.GetFinishTime(Works)</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}
