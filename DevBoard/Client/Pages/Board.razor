@@ -13,71 +13,38 @@ else
             <tr>
                 <th>Дата:</th>
                 <th>Название:</th>
-                <th>Задание:</th>
-                <th>Выполнение:</th>
-                <th>Старт:</th>
-                <th>Стоп:</th>
                 <th>Всего:</th>
                 <th style="text-align:center">Действие:</th>
             </tr>
         </thead>
         <tbody>
-            @*Строки с работами:*@
             @foreach (var work in Works)
             {
                 <tr>
                     <td>@work.Start.ToShortDateString()</td>
                     <td>@work.Name</td>
-                    <td>@work.Description</td>
-                    <td>@work.WhatsUp</td>
-                    <td style="white-space:nowrap">@work.GetStartTime()</td>
-                    <td style="white-space:nowrap">@work.GetStopTime()</td>
                     <td style="white-space:nowrap">@work.GetDuration()</td>
                     <td style="text-align:center">
                         <button class="btn btn-dark">
                             <span class="oi oi-media-play" aria-hidden="true"></span>
                         </button>
+                        <button class="btn btn-dark">
+                            <span class="oi oi-media-pause" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-dark">
+                            <span class="oi oi-media-stop" aria-hidden="true"></span>
+                        </button>
                     </td>
                 </tr>
 
             }
-            @*Всего:*@
             <tr>
                 <td></td>
-                <td></td>
-                <td></td>
                 <td style="text-align:right">Всего:</td>
-                <td></td>
-                <td></td>
                 <td>@Work.GetFinishTime(Works)</td>
                 <td></td>
             </tr>
-            @*Добавление новой работы:*@
-            <tr>
-                <td>
-                    @DateTime.Now.ToShortDateString() @*Дата*@
-                </td>
-                <td>
-                    <select class="custom-select">
-                        @*Название работы:*@
-                        <option>DevBoard</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="custom-select">
-                        <option>Доработка формы добавления работ;</option>
-                        <option>Сделать enum на все статичные ссылки;</option>
-                        <option>Сделать принудительный перенос после ';';</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" style="width:100%"/>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+
         </tbody>
     </table>
 }

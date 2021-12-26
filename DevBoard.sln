@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBoard.Server", "DevBoard\Server\DevBoard.Server.csproj", "{3D4C9395-55DE-4BD7-B00E-3300AFBC2CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBoard.Server", "DevBoard\Server\DevBoard.Server.csproj", "{3D4C9395-55DE-4BD7-B00E-3300AFBC2CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBoard.Client", "DevBoard\Client\DevBoard.Client.csproj", "{BA9696F7-08FE-4A8C-87BE-9152829A7104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBoard.Client", "DevBoard\Client\DevBoard.Client.csproj", "{BA9696F7-08FE-4A8C-87BE-9152829A7104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBoard.Shared", "DevBoard\Shared\DevBoard.Shared.csproj", "{3A7FAB01-5961-4094-93FC-231AC871C9A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBoard.Shared", "DevBoard\Shared\DevBoard.Shared.csproj", "{3A7FAB01-5961-4094-93FC-231AC871C9A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
