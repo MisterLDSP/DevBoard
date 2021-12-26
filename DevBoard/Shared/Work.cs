@@ -211,7 +211,7 @@ namespace DevBoard.Shared
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
                     Duration = 0,
-                    Name = "Распределить ID родительских работ."
+                    Name = "Подключить БД."
                 },
                 new Work()
                 {
