@@ -10,6 +10,7 @@ namespace DevBoard.Shared
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Note { get; set; }
         public DateTime Start { get; set; }
         public DateTime Stop => Start.AddMinutes(Duration);
         public int Duration { get; set; }
@@ -61,7 +62,7 @@ namespace DevBoard.Shared
                 new Work()
                 {
                     Start = new DateTime(2021, 12, 11, 17, 5, 0),
-                    Duration = 1,
+                    Duration = 2,
                     Name = "DevBoard"
                 },
                 new Work()
@@ -202,17 +203,39 @@ namespace DevBoard.Shared
                     Duration = 37,
                     Name = "Форматирование списка работ."
                 },
+                new Work()
+                {
+                    Start = new DateTime(2021, 12, 29, 18, 18, 0),
+                    Duration = 95,
+                    Name = "Подключить БД.",
+                    Note = "Для подключения БД SqlLite необходимо установить Microsoft.EntityFrameworkCore.Sqlite. Добавляем контекст работы с бд. Устанавливаем пакет Microsoft.EntityFrameworkCore.Tools. В консоли диспетчера пакетов выполняем команду Add-Migration InitialCreate. "
+                },
+                new Work()
+                {
+                    Start = new DateTime(2021, 12, 29, 20, 38, 0),
+                    Duration = 43,
+                    Name = "Подключить БД.",
+                    Note = "Снова пробывал подключиться через отдельный сервис."
+                },
+                new Work()
+                {
+                    Start = new DateTime(2022, 1, 1, 14, 1, 0),
+                    Duration = 35,
+                    Name = "Подключить БД.",
+                    Note = "Подлкючил наконец то БД в сервисоном слое. В файлике ReadMe.txt подробно описано как это было."
+                },
 
                 ////////////////Текущая//////////////////////////////////////////
-
+                
                 /////////////////////////////////////////////////////////////////
                 
                 new Work()
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
                     Duration = 0,
-                    Name = "Распределить ID родительских работ."
+                    Name = "Протестировать добавление, чтения, обновления и удаления работ."
                 },
+
                 new Work()
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
