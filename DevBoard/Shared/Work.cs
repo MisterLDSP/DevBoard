@@ -233,7 +233,21 @@ namespace DevBoard.Shared
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
                     Duration = 0,
-                    Name = "Протестировать добавление, чтения, обновления и удаления работ."
+                    Name = "Установить небольшой девелопер SQLite."
+                },
+
+                new Work()
+                {
+                    Start = new DateTime(1, 1, 1, 0, 0, 0),
+                    Duration = 0,
+                    Name = "Протестировать добавление, чтения, обновления и удаления работ из бд."
+                },
+
+                new Work()
+                {
+                    Start = new DateTime(1, 1, 1, 0, 0, 0),
+                    Duration = 0,
+                    Name = "Отлов ошибок."
                 },
 
                 new Work()
