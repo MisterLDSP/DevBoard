@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DbServices.Migrations
 {
     [DbContext(typeof(DbModel))]
-    [Migration("20220101112749_Inital")]
-    partial class Inital
+    [Migration("20220106073232_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,9 +28,11 @@ namespace DbServices.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(1024)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Note")
+                        .HasMaxLength(2048)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ParentWorkId")

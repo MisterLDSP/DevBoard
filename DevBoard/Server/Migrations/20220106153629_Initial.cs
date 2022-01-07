@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DbServices.Migrations
+namespace DevBoard.Server.Migrations
 {
-    public partial class Inital : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,11 @@ namespace DbServices.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Note = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: true),
+                    Note = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: true),
                     Start = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Duration = table.Column<int>(type: "INTEGER", nullable: false),
-                    ParentWorkId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ParentWorkId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,7 +27,7 @@ namespace DbServices.Migrations
                         column: x => x.ParentWorkId,
                         principalTable: "Works",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

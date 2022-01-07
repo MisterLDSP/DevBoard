@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +10,17 @@ namespace DevBoard.Shared
 {
     public class Work
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [MaxLength(1024)]
         public string Name { get; set; }
+        [MaxLength(2048)]
         public string Note { get; set; }
         public DateTime Start { get; set; }
         public DateTime Stop => Start.AddMinutes(Duration);
         public int Duration { get; set; }
-        public int ParentWorkId { get; set; }
-        public Work ParentWork { get; set; }
+        public virtual List<Work> SubWorks { get; set; }
 
         #region Строковое представление времени.
         public string GetDuration()
@@ -224,25 +229,44 @@ namespace DevBoard.Shared
                     Name = "Подключить БД.",
                     Note = "Подлкючил наконец то БД в сервисоном слое. В файлике ReadMe.txt подробно описано как это было."
                 },
+                new Work()
+                {
+                    Start = new DateTime(2022, 1, 6, 11, 39, 0),
+                    Duration = 13,
+                    Name = "Установить небольшой девелопер SQLite.",
+                    Note = "Установил SQLite Developer от SharpSoftwarePlus http://www.sqlitedeveloper.com/download. Версия 4.29(8mb). Нужно проверить операции с бд и через EF и через девелопер."
+                },
+                new Work()
+                {
+                    Start = new DateTime(2022, 1, 6, 12, 23, 0),
+                    Duration = 15,
+                    Name = "Оптимизация модели Work под EF (прописать аннотации).",
+                    Note = "Сделал миграцию и не получилось. Пришлось удалить все ненужное (Works), откатываться и снова делать миграцию и апдэйт."
+                },
+                new Work()
+                {
+                    Start = new DateTime(2022, 1, 6, 16, 30, 0),
+                    Duration = 78,
+                    Name = "Написать контроллер для работ.",
+                    Note = "Написал и подключил api контроллер WorkController. Оттестил только заход в контроллер. Необходимо оттестить добавление новой работы."
+                },
+                new Work()
+                {
+                    Start = new DateTime(2022, 1, 7, 10, 40, 0),
+                    Duration = 132,
+                    Name = "Протестировать добавление работ в бд.",
+                    Note = "Работы добавляются. Немного допилил отображение работ. Сделал новую формочку в таблице для добавления работ. Сделал метод рефреша таблицы. Начал пилить редактирование работ."
+                },
 
                 ////////////////Текущая//////////////////////////////////////////
                 
                 /////////////////////////////////////////////////////////////////
-                
                 new Work()
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
                     Duration = 0,
-                    Name = "Установить небольшой девелопер SQLite."
+                    Name = "Протестировать чтения, обновления и удаления работ из бд."
                 },
-
-                new Work()
-                {
-                    Start = new DateTime(1, 1, 1, 0, 0, 0),
-                    Duration = 0,
-                    Name = "Протестировать добавление, чтения, обновления и удаления работ из бд."
-                },
-
                 new Work()
                 {
                     Start = new DateTime(1, 1, 1, 0, 0, 0),
