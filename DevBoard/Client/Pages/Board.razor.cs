@@ -13,7 +13,8 @@ namespace DevBoard.Client.Pages
     {
         private IEnumerable<Work> Works { get; set; }
         private Work Work { get; set; } = new Work();
-        [Inject] HttpClient httpClient { get; set; }
+        [Inject] HttpClient HttpClient { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
 
 
         protected override async Task OnInitializedAsync()
@@ -27,20 +28,26 @@ namespace DevBoard.Client.Pages
             //    Note = "Тестовое описание."
             //};
             //await httpClient.PostAsJsonAsync<Work>("api/Works", work);
-            Works = await httpClient.GetFromJsonAsync<IEnumerable<Work>>("api/Works");
+            Works = await HttpClient.GetFromJsonAsync<IEnumerable<Work>>("api/Works");
             StateHasChanged();
         }
 
         public async Task Add()
         {
             Work.Start = DateTime.Now;
-            await httpClient.PostAsJsonAsync<Work>("api/Works", Work);
+            await HttpClient.PostAsJsonAsync<Work>("api/Works", Work);
             await Refresh();
+        }
+
+        
+        public async Task Play(int id)
+        {
+            NavigationManager.NavigateTo($"/playwork/{id}");
         }
 
         async Task Refresh()
         {
-            Works = await httpClient.GetFromJsonAsync<IEnumerable<Work>>("api/Works");
+            Works = await HttpClient.GetFromJsonAsync<IEnumerable<Work>>("api/Works");
             Work.Name = String.Empty;
             StateHasChanged();
         }

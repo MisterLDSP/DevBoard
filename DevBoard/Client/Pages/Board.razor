@@ -11,6 +11,12 @@ else
     <table class="table table-dark table-hover">
         <thead>
             <tr>
+                <td></td>
+                <td></td>
+                <td>@Work.GetFinishTime(Works)</td>
+                <td></td>
+            </tr>
+            <tr>
                 <th>Дата:</th>
                 <th>Название:</th>
                 <th>Всего:</th>
@@ -18,18 +24,23 @@ else
             </tr>
         </thead>
         <tbody>
+            <!--Финишное время.-->
+            
+
+            <!--Позадачи.-->
             @foreach (var work in Works)
             {
                 <tr>
-                    <td>@work.Start.ToShortDateString()</td>       
+                    <td>@work.Start.ToShortDateString()</td>
                     <td>@work.Name</td>
                     <td style="white-space:nowrap">@work.GetDuration()</td>
                     <td style="text-align:center">
-                        <button class="btn btn-dark">
+                        <button class="btn btn-dark" @onclick="() => Play(work.Id)">
                             <span class="oi oi-media-play" aria-hidden="true"></span>
                         </button>
                     </td>
-                </tr>   
+                </tr>
+
             }
 
             <!--Добавление новой работы.-->
@@ -45,14 +56,6 @@ else
                     </button>
                 </td>
             </tr>
-
-            <tr>
-                <td></td>
-                <td style="text-align:right">Всего:</td>
-                <td>@Work.GetFinishTime(Works)</td>
-                <td></td>
-            </tr>
-
         </tbody>
     </table>
 }

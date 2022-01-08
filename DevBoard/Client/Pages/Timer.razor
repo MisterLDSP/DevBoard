@@ -1,0 +1,10 @@
+﻿@page "/timer"
+
+<h2>@elapsedtime</h2>
+<button class="btn btn-dark" @onclick="() => StartTime()">
+    <span class="oi oi-media-play" aria-hidden="true"></span>
+</button>
+<button class="btn btn-dark" @onclick="() => StopTime()">
+    <span class="oi oi-media-stop" aria-hidden="true"></span>
+</button>
+
