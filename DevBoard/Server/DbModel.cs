@@ -15,10 +15,10 @@ namespace DevBoard.Server
 
         public DbModel(DbContextOptions options) : base(options)
         {
-            DbPath = $"Data Source={Path.Combine(Directory.GetCurrentDirectory())}\\devboard.db";
-            Database.EnsureCreated();
+            DbPath = Helper.GetPCS();
+            //Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite(DbPath);
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseNpgsql(DbPath);
     }
 }

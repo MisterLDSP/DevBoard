@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DevBoard.Server.Migrations
 {
@@ -11,29 +12,29 @@ namespace DevBoard.Server.Migrations
                 name: "Works",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: true),
-                    Note = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: true),
-                    Start = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Duration = table.Column<int>(type: "INTEGER", nullable: false),
-                    ParentWorkId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true),
+                    Note = table.Column<string>(type: "character varying(2048)", maxLength: 2048, nullable: true),
+                    Start = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Duration = table.Column<int>(type: "integer", nullable: false),
+                    WorkId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Works", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Works_Works_ParentWorkId",
-                        column: x => x.ParentWorkId,
+                        name: "FK_Works_Works_WorkId",
+                        column: x => x.WorkId,
                         principalTable: "Works",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Works_ParentWorkId",
+                name: "IX_Works_WorkId",
                 table: "Works",
-                column: "ParentWorkId");
+                column: "WorkId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

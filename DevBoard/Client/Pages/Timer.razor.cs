@@ -16,6 +16,7 @@ namespace DevBoard.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             StartTime();
+            await Task.CompletedTask;
         }
 
         public void StartTime()
